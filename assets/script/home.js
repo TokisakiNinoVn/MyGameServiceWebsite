@@ -2,14 +2,11 @@
 function updateVisitCount(count) {
     document.getElementById('visitCount').textContent = count;
 }
-
-// Hàm để lấy số lượt truy cập từ Local Storage
 function getVisitCount() {
     const count = localStorage.getItem('visitCount');
     return count ? parseInt(count) : 0;
 }
 
-// Hàm để tăng số lượt truy cập và cập nhật lại trong Local Storage
 function increaseVisitCount() {
     const currentCount = getVisitCount();
     const newCount = currentCount + 1;
@@ -17,23 +14,15 @@ function increaseVisitCount() {
     updateVisitCount(newCount);
 }
 
-// Khi trang được tải lên, ta sẽ cập nhật số lượt truy cập lên giao diện
 document.addEventListener('DOMContentLoaded', function() {
     const currentCount = getVisitCount();
     updateVisitCount(currentCount);
 });
 
-// Gọi hàm increaseVisitCount() khi người dùng truy cập vào trang web
 increaseVisitCount();
 
 
-
 // __________________________________Message 
-// function expandContainer() {
-//     var ulMess = document.querySelector('.ul-mess');
-//     ulMess.classList.toggle('show');
-// }
-
 
   function expandContainer() {
     var ulMess = document.querySelector('.ul-mess');
@@ -44,16 +33,13 @@ increaseVisitCount();
     }
   }
 
-  // Thêm event listener để ẩn ul-mess khi click bất kỳ vị trí nào trên trang
   document.addEventListener('click', function(event) {
     var ulMess = document.querySelector('.ul-mess');
     var messageIcon = document.querySelector('.message-icon');
 
-    // Kiểm tra xem phần tử bị click có phải là ul-mess hay message-icon hay không
     var isClickedInsideUlMess = ulMess.contains(event.target);
     var isClickedMessageIcon = messageIcon.contains(event.target);
 
-    // Nếu click ngoài ul-mess và message-icon, ẩn ul-mess
     if (!isClickedInsideUlMess && !isClickedMessageIcon) {
       ulMess.style.display = 'none';
     }
@@ -61,6 +47,15 @@ increaseVisitCount();
 
 
   
+window.addEventListener('keydown', function(event) {
+    if (event.key === 'F12' || event.keyCode === 123) {
+    //   alert('Không được phép truy cập mã nguồn trang web!');
+      alert('Access to website source code is not allowed!');
+
+      event.preventDefault();
+    }
+  });
+
 document.addEventListener("contextmenu", function(e) {
     e.preventDefault();
 });
@@ -70,6 +65,11 @@ document.addEventListener("keydown", function(e) {
     }
 });
 
+document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+    alert('>> Tokisaki Nino: "Say no to "Inspect" website!" :))');
+});
+  
 document.addEventListener('contextmenu', function(event) {
     event.preventDefault();
     alert('>> Tokisaki Nino: "Say no to "Inspect" website!" :))');
